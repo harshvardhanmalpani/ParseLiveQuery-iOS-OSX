@@ -166,13 +166,13 @@ extension Client: WebSocketDelegate {
             if shouldPrintWebSocketLog { NSLog("ParseLiveQuery: Received pong but we don't handle it...") }
         case .ping(_):
             if shouldPrintWebSocketLog { NSLog("ParseLiveQuery: Received ping but we don't handle it...") }
-        }
         case .peerClosed:
             isConnecting = false
             if shouldPrintWebSocketLog { NSLog("ParseLiveQuery: WebSocket connection closed...") }
             // TODO: Better retry logic, unless `disconnect()` was explicitly called
             if !userDisconnected {
                 reconnect()
+            }
         }
     }
 }
